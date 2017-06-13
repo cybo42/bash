@@ -23,4 +23,8 @@ function dtiso(){
   date -u +%Y-%m-%dT%H:%M:%S%z
 }
 
+function juliandt(){
+  date +%j
+}
+
 
