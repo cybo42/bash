@@ -10,3 +10,6 @@ function countLint(){
   find . -name "lint*.xml" -exec grep -cs '<issue' {} \; |paste -s -d'+' - |bc
 }
 
+function firebaseAnalyticsDebug(){
+  adb shell setprop debug.firebase.analytics.app com.nytimes.android.debug
+}
