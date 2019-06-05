@@ -10,6 +10,14 @@ function countLint(){
   find . -name "lint*.xml" -exec grep -cs '<issue' {} \; |paste -s -d'+' - |bc
 }
 
+function countKTLint(){
+  find . -name "ktlint.xml" -exec grep -cs '<error' {} \; |paste -s -d'+' - |bc
+}
+
+function countDetekt(){
+  find . -name "detekt.xml" -exec grep -cs '<error' {} \; |paste -s -d'+' - |bc
+}
+
 function debugFirebaseAnalytics(){
   adb shell setprop debug.firebase.analytics.app com.nytimes.android.debug
 }
@@ -45,4 +53,8 @@ function showCurrentActivity(){
 
 function monitorCurrentActivity(){
   watch -n 3 "adb shell dumpsys activity top | grep ACTIVITY"
+}
+
+function printSystemImages() {
+  grep image  $HOME/.android/avd/*/config.ini |perl -ne 's/.*?(system-images.*)\//$1/ ; s%/%;%g ;print'
 }

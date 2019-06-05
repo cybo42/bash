@@ -12,3 +12,13 @@ hl ()
 { 
     perl -pe "s/$1/\e[0;30;42m$&\e[0m/g"
 }
+
+# Gradle helper
+function gr() {
+  if [ -x './gradlew' ];then
+    ./gradlew $@
+  else
+    gradle $@
+  fi
+}
+
