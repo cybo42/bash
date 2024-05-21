@@ -1,7 +1,7 @@
 # SSH w/o checking hostname (for cloud hosts)
 alias ssh_nh='ssh -o StrictHostKeyChecking=no'
 
-alias ws='python -m SimpleHTTPServer'
+alias ws='python3 -m http.server'
 alias stree='open -a SourceTree'
 
 #-----------------------------------------
