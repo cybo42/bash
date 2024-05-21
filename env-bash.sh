@@ -67,10 +67,12 @@ export PATH
 
 #-----------------------------------------
 # Load rbenv ruby version manager
-#-----------------------------------------------------------------------
+#-----------------------------------------
 function load_rbenv(){
   eval "$(rbenv init -)"
 }
 
-
-export PATH=~/apps/flutter/bin:$PATH
+#-----------------------------------------
+# To help GPG handle passphrases
+#-----------------------------------------
+export GPG_TTY=$(tty)
