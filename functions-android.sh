@@ -50,6 +50,9 @@ function showCurrentActivity(){
   adb shell dumpsys activity top | grep ACTIVITY
 }
 
+function showCurrentFragments() {
+  adb shell dumpsys activity top | grep -E 'Fragment|Activity' | head -60
+}
 
 function monitorCurrentActivity(){
   watch -n 3 "adb shell dumpsys activity top | grep ACTIVITY"
@@ -57,4 +60,27 @@ function monitorCurrentActivity(){
 
 function printSystemImages() {
   grep image  $HOME/.android/avd/*/config.ini |perl -ne 's/.*?(system-images.*)\//$1/ ; s%/%;%g ;print'
+}
+
+function logAdbPackage() {
+  local package=${1:-com.nytimes.android.debug}
+  shift;
+  echo "logcat for package: $package"
+  adb logcat -v color --pid=$(adb shell pidof $package) $@
+}
+
+function setAndroidSerial() {
+  export ANDROID_SERIAL=$(adb devices |grep device$ | cut -f 1  |fzf)
+}
+
+function verify-apk-cert() {
+  local apksigner=$(find $ANDROID_SDK_ROOT/build-tools -name "apksigner.jar" |sort -r |head -1)
+  [ -n "$DEBUG_CMD" ] && echo "DEBUG: using $apksigner to verify cert" 
+  java -jar $apksigner verify --print-certs $@
+}
+
+function package-name-from-apk() {
+  local aapt=$(find $ANDROID_SDK_ROOT/build-tools -name "aapt" |sort -r |head -1)
+  [ -n "$DEBUG_CMD" ] && echo "DEBUG: using $appt to dump badging for packageName" 
+  $aapt dump badging $@ | awk '/package/{gsub("name=|'"'"'","");  print $2}'
 }
