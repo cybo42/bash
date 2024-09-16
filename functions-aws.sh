@@ -31,3 +31,17 @@ function awsprof() {
       esac
   done  
 }
+
+function aws-export-env() {
+  local tmpEnv=$(mktemp) 
+  aws configure export-credentials --format=env > $tmpEnv
+  source $tmpEnv
+  rm $tmpEnv
+}
+
+function aws-unset-env() {
+  unset AWS_CREDENTIAL_EXPIRATION
+  unset AWS_SESSION_TOKEN
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_ACCESS_KEY_ID
+}

@@ -84,3 +84,11 @@ function package-name-from-apk() {
   [ -n "$DEBUG_CMD" ] && echo "DEBUG: using $appt to dump badging for packageName" 
   $aapt dump badging $@ | awk '/package/{gsub("name=|'"'"'","");  print $2}'
 }
+
+function shutdownAllEmulators() {
+  androidDevices | grep emulator |while read eid
+  do
+    echo "Stopping $eid"
+    adb -s $eid emu kill
+  done
+}

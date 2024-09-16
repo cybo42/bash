@@ -6,3 +6,4 @@ export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+

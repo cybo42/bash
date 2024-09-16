@@ -7,6 +7,9 @@ function cdmkdir(){
   mkdir -p "$@" && cd $_;
 }
 
+function cdfz() {
+  cd $(\ls -1d */ |fzf)
+}
 
 hl () 
 { 
@@ -15,6 +18,7 @@ hl ()
 
 # Gradle helper
 function gr() {
+  echo "GRADLE_USER_HOME=${GRADLE_USER_HOME:-$HOME/.gradle}"
   if [ -x './gradlew' ];then
     ./gradlew $@
   else
@@ -22,3 +26,6 @@ function gr() {
   fi
 }
 
+function vigrp() {
+  vi "${GRADLE_USER_HOME:-$HOME/.gradle}/gradle.properties"
+}
