@@ -1,3 +1,8 @@
+
+function rm-quarantine () {
+  xattr -d com.apple.quarantine $@
+}
+
 function dnsflush(){
   #OS X Yosemite +
   #Use the following Terminal command to reset the DNS cache:
