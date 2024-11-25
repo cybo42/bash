@@ -1,7 +1,7 @@
 
-export GOROOT=/opt/go/current
 export GOPATH=$HOME/code/go
-
-pathprepend $GOROOT/bin
 pathprepend $GOPATH/bin
+
+#export GOROOT=/opt/go/current
+#pathprepend $GOROOT/bin
 
