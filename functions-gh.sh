@@ -19,3 +19,9 @@ function prsLast100 () {
   gh search prs --limit 100 --sort updated --author=@me --json number,title,createdAt,updatedAt,repository,url,state |jq -r ".[] | [.url, .state, .title, .repository.nameWithOwner, .createdAt, .updatedAt] | @tsv "
 }
 
+function gh_scopes() {
+  curl \
+    -H "Authorization: Bearer $(gh auth token)" https://api.github.com/users/codertocat \
+    -w 'authorized scopes:%header{x-oauth-scopes}\nchecked scopes:%header{x-accepted-oauth-scopes}\n' \
+    -sS -o /dev/null
+}
