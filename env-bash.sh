@@ -1,6 +1,8 @@
 HISTSIZE=2000
 export HISTSIZE
 
+export TERM=xterm-256color
+
 #-----------------------------------------
 # Highlight GREP matches
 #-----------------------------------------
