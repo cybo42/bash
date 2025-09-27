@@ -5,7 +5,7 @@ function _update_ps1() {
       -cwd-max-depth 3 \
       -newline \
       -numeric-exit-codes \
-      -modules "venv,user,host,ssh,cwd,perms,git,hg,jobs,exit,root,node,aws" -error $?
+      -modules "venv,user,host,ssh,cwd,perms,git,hg,jobs,exit,aws,perms,root" -error $?
     )"
 }
 
