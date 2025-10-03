@@ -11,3 +11,8 @@ function docker-ctx () {
   docker context use $(docker context list -q | fzf --footer "$context_list"  --highlight-line)
 
 }
+
+function docker-cleanup () {
+  	docker system prune -af
+  	docker volume prune -f
+}

@@ -16,6 +16,10 @@ hl ()
     perl -pe "s/$1/\e[0;30;42m$&\e[0m/g"
 }
 
+hlg () {
+  grep --color=always -E "$1|$"
+}
+
 # Gradle helper
 function gr() {
   echo "GRADLE_USER_HOME=${GRADLE_USER_HOME:-$HOME/.gradle}"
@@ -28,4 +32,8 @@ function gr() {
 
 function vigrp() {
   vi "${GRADLE_USER_HOME:-$HOME/.gradle}/gradle.properties"
+}
+
+function curl-status-code () {
+  curl -s -o /dev/null -w "%{http_code}\n" "$1"
 }
