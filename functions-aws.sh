@@ -8,6 +8,10 @@ function ls-ec2-instances() {
 
 }
 
+aws-whoami() {
+  aws sts get-caller-identity 
+}
+
 function awsprof() {
 
   AWS_CONFIGFILE=$HOME/.aws/config

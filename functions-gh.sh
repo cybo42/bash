@@ -9,6 +9,10 @@ function prsMine () {
   gh search prs --state=open --author=@me
 }
 
+function prsMineFull () {
+  gh search prs --state=open --author=@me --json number,title,createdAt,updatedAt,repository,url,state  | jq -r ".[] | [.url, .state, .title, .repository.nameWithOwner, .createdAt, .updatedAt] | @tsv "
+}
+
 function prsReviewedByMe () {
   gh search prs --archived=false --state=open --reviewed-by=@me \
     --json number,title,updatedAt,repository,url \

@@ -1,3 +1,2 @@
 
-alias k=kubectl
-
+alias k=kubecolor
