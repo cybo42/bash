@@ -29,3 +29,7 @@ function gh_scopes() {
     -w 'authorized scopes:%header{x-oauth-scopes}\nchecked scopes:%header{x-accepted-oauth-scopes}\n' \
     -sS -o /dev/null
 }
+
+function gh_ls_release() {
+  gh release list --json name,tagName,publishedAt -t '{{range .}}{{.name}}{{": "}}{{ .tagName}}{{": "}}{{.publishedAt}}{{"\n"}}{{end}}'
+}
