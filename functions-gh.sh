@@ -1,8 +1,8 @@
 
 function prsReviewRequested () {
-  gh search prs --archived=false --state=open --review-requested=@me  \
-    --json number,title,updatedAt,repository,url \
-    --template '{{range .}}{{tablerow  .repository.nameWithOwner  (printf "#%v" .number | autocolor "green") .title (timeago .updatedAt) .url }}{{end}}'
+  gh search prs --archived=false --state=open --review-requested=@me \
+    --json number,author,title,updatedAt,repository,url \
+    --template '{{range .}}{{tablerow  .repository.nameWithOwner  (printf "#%v" .number | autocolor "green") .author.login .title .url (timeago .updatedAt)}}{{end}}'
 }
 
 function prsMine () {

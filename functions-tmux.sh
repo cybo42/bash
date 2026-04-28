@@ -3,7 +3,7 @@ function tmuxpwd (){
 }
 
 function tmux-ls-tty () {
-  tmux list-panes -aF "#{session_name} / #{window_name}: #{pane_tty}"
+  tmux list-panes -aF "#{session_name} / #{window_index} [#{window_name}] p:#{pane_index}: #{pane_tty}"
 }
 
 function tmux-window-pwd () {
